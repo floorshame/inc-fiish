@@ -1,3 +1,4 @@
+/* thank you for using fiish as your next skidded project! */
 var game = {
     Fish: 0,
     FishPerClick: 1,
