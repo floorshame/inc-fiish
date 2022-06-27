@@ -1,159 +1,4 @@
-<link rel="stylesheet" href="stylesheet.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<link rel="icon" href="img/fishingrod.png">
-<title>fiish</title>   
-<html>
-    <head>
-        <div id="TABSwitcher">
-
-
-            <button Title="Ponds" onclick="TabSwitch('pond')" id="Pond_TAB_Button" style="margin-left: 5px;" class="TABButton"><span class="material-symbols-rounded tabbuttonicon">&#xead7;</span></button>
-            <button Title="Koi" onclick="TabSwitch('koi')" id="Koi_TAB_Button" class="TABButton"><span class="material-symbols-rounded tabbuttonicon">&#xf06c;</span></button>
-            <button Title="Shop" onclick="TabSwitch('shop')" id="Shop_TAB_Button" class="TABButton"><span class="material-symbols-rounded tabbuttonicon">&#xe8cc;</span></button>
-            <button Title="Settings" onclick="TabSwitch('settings')" id="Settings_TAB_Button" class="TABButton"><span class="material-symbols-rounded tabbuttonicon">&#xe8b8;</span></button>
-            <button Title="Sell Fish"  onclick="sellfish()" class="TABButton moneyhover"><span class="material-symbols-rounded tabbuttonicon">&#xef63;</span></button>
-
-            <h1 class="logotext">fiish</h1>
-            <h1 class="versiontext">0.1.2.3</h1>
-
-
-        </div>
-        <center>
-        <p class="fishscore">Fish - <span id="fishamnt">0</span></p>
-        <p class="moneyscore">$ - <span id="moneyamnt">0</span></p>
-
-        </center>
-    </head>
-
-    <body>
-
-
-
-        <div id="TAB_pond">
-            <div class="salmonpond" id="salmonpond">
-                <center>
-                    <h1 class="pondname">salmon pond</h1>
-                    <button onclick="fishfromthepond(0)" id="salmonpondbutton" class="pondbutton">Fish | <span id="salmonpondcooldown">1</span> Second</button>
-                    <button onclick="purchaseAF(0)" id="salmonafbutton" class="pondbutton">AutoFish | <span id="salmonpondaf">10</span> Seconds</br> Cost: $<span id="salmonafcost">15</span> | Owned: <span id="salmonafowned">0</span></button>
-
-                </center>
-            </div>
-
-
-            <div class="salmonpond" id="tunapond">
-                <center>
-                    <h1 class="pondname">tuna pond</h1>
-
-                    <button onclick="fishfromthepond(1)" id="tunapondbutton" class="pondbutton">Fish | <span id="tunacooldown">3</span> Seconds</button>
-                    <button onclick="purchaseAF(1)" id="tunaafbutton" class="pondbutton">AutoFish | <span id="tunapondaf">10</span> Seconds</br> Cost: $<span id="tunaafcost">50</span> | Owned: <span id="tunaafowned">0</span></button>
-
-                </center>
-            </div>
-
-            <div class="salmonpond" id="shrimppond">
-                <center>
-                    <h1 class="pondname">shrimp pond</h1>
-                    <button onclick="fishfromthepond(2)" id="shrimppondbutton" class="pondbutton">Fish | <span id="shrimppondcooldown">1</span> Second</button>
-                    <button onclick="purchaseAF(2)" id="shrimpafbutton" class="pondbutton">AutoFish | <span id="shrimppondaf">10</span> Seconds</br> Cost: $<span id="shrimpafcost">250</span> | Owned: <span id="shrimpafowned">0</span></button>
-
-                </center>
-            </div>
-
-
-        </div>
-
-
-
-        <div id="TAB_Shop">
-            <div class="Shop_Seperator" style="margin-left: 2%">
-                <center>
-                    <h1 class="Shop_Header">Ponds</h1>
-                    <button class="PurchaseButton" id="tunapondbuy" onclick="purchasePond(1)">Tuna pond | Cost: $<span id="fishnetcost">50</span></button>
-                    <button class="PurchaseButton" id="shrimppondbuy" onclick="purchasePond(2)">Shrimp pond | Cost: $<span id="fishnetcost">500</span></button>
-
-                </center>
-            </div>
-            <div class="Shop_Seperator" style="margin-left: 2%">
-                <center>
-                    <h1 class="Shop_Header">Upgrades</h1>
-                    <button class="PurchaseButton" id="0upgradebuy" onclick="purchaseUpgrade(0)">[0] x2 salmon | Cost: <span id="fishnetcost">25</span></button>
-                    <button class="PurchaseButton" id="1upgradebuy" onclick="purchaseUpgrade(1)">[1] x2 tuna | Cost: <span id="fishnetcost">100</span></button>
-
-                </center>
-            </div>
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-        <div id="TAB_Settings">
-            <button class="savebutton" onclick="saveGame();">Save</button>
-            <button class="resetbutton" onclick="resetGame();">Reset</button>
-        </div>
-
-        </body>
-        </div>
-        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-        <defs>
-        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-        </defs>
-        <g class="parallax">
-        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(102, 152, 218,0.1" />
-        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(102, 152, 218,0.1)" />
-        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(102, 152, 218,0.1" />
-</g>
-</svg>
-        
-        <div class="Notification">
-        </div>
-
-
-
-
-
-
-
-
-
-        <div id="TAB_Koi">
-            <h1 class="robohead">
-                <span style="  font-size: 150px;" class="material-symbols-rounded">&#xf06c;</span>             
-            </h1>
-        </div>
-        
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-    var game = {
+var game = {
     Fish: 0,
     FishPerClick: 1,
     FPS: 0,
@@ -230,9 +75,6 @@ var upgrade = {
     ]
 }
 
-</script>
-
-<script>
 const NotificationConst = document.querySelector('.Notification')
 
 
@@ -248,9 +90,6 @@ function createNotification(text, seconds){
   setTimeout(() => {NotificationN.remove()}, seconds * 1000)
 }
 
-</script>
-
-<script>
 var HomeTab = document.getElementById("fishamnt");
 
 document.getElementById("fishamnt").innerHTML = game.Fish;
@@ -354,10 +193,6 @@ setInterval(function() {
 }, pond.AFcooldown[0] * 1000);
 
 
-</script>
-
-
-<script> 
 var TabOpened = "pond"; /* tab that is currently opened */
 /* tab stuff*/
 document.getElementById("TAB_Shop").style.display = 'none'
@@ -498,15 +333,6 @@ function sellfish() {
     }
 }
 
-
-</script>
-
-
-
-
-
-
-<script>
 function saveGame() {
     var gamedata = {
         /* main vars*/
@@ -663,12 +489,5 @@ window.onload = function() {
     console.log('%fiish has been loaded', 'background: #000000; color: #c4f6ff');
 
 };
-
-
-
-
-</script>
-
-
 
 
