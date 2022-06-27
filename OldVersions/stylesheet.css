@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+* {
+    margin: 0;
+}
+html {
+    background-color: rgba(10, 57, 65, 0.685);
+}
+
+:root {
+  --divback: #00000063;
+}
+
+.bottombuttons {
+    position:absolute;
+    bottom: 0;
+    margin-bottom: 3%;
+}
+.TABButton {
+    border-radius: 5px;
+    border: 2px solid rgb(179, 240, 255);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    width: 10%;
+    transition: 0.3s;
+    display: inline-block;
+    background-color: var(--divback);
+    color: white;
+    margin-bottom: 5px;
+}
+.tabbuttonicon {
+  vertical-align:bottom;
+  margin-right: 5px;
+  margin-bottom: 1px;
+}
+
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+
+}
+.TABButton:hover {
+    color: rgb(180, 255, 255);
+    cursor: pointer;
+}
+.TABButton:active {
+
+}
+.NotHeader {
+  color: white;
+}
+.NotText {
+
+}
+.Notification {
+  width: 500px;
+  bottom: 0;
+  left: 50%;
+  margin-top: -100px;  /* Negative half of height. */
+  margin-left: -250px;  /* Negative half of width. */
+  position: fixed;
+  font-family: 'Roboto Mono', monospace;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 25px;
+  border-radius: 5px;
+}
+.FishButton {
+    width: 10%;
+    transition: 0.3s;
+}
+.FishButton:hover {
+    cursor: pointer;
+    width: 10.5%;
+
+}
+#TABSwitcher {
+    /* border-bottom: 2px solid black; */
+    padding-top: 5px;
+    background-color: var(--divback);
+    border-radius: 5px;
+    margin: 3px;
+    
+}
+.logotext {
+    font-family: 'Roboto Mono', monospace;
+    float: right;
+    font-size: 20px;
+    color: rgb(180, 255, 255);
+    text-shadow: 2px 2px rgb(37, 60, 95);
+    margin-right: 10px;
+}
+.versiontext {
+    font-family: 'Roboto Mono', monospace;
+    float: right;
+    font-size: 20px;
+    margin-right: 5px;
+    text-shadow: 2px 2px rgb(0, 0, 0);
+    color: rgb(121, 183, 255);
+
+}
+.fishscore {
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    font-size: 30px;
+    text-shadow: 2px 2px black;
+}
+.FishButton {
+    margin-top: 10%;
+}
+.PurchaseButton {
+    font-family: 'Roboto Mono', monospace;
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: var(--divback);
+    color: white;
+    transition: 0.3s;
+    margin-top: 2%;
+    width: 90%;
+    font-size: 15px;
+}
+.PurchaseButton:hover {
+    color: rgb(180, 255, 255);
+    cursor: pointer;
+    background-color: rgb(56, 56, 56);
+
+}
+.Shop_Header {
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+}
+.Shop_Seperator {
+    border: 2px solid black;
+    width: 25%;
+    border-radius: 5px;
+    background-color: var(--divback);
+}
+.fps {
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    font-size: 20px;
+    text-shadow: 2px 2px black;
+
+}
+.discordinvite {
+    border: 2px solid black;
+    width:fit-content;
+    padding: 5px;
+    border-radius: 15px;
+    margin-left: 5px;
+}
+
+.savebutton {
+    border: 2px solid black;
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    background-color: var(--divback);
+    font-size: 25px;
+    border-radius: 5px;
+    margin-left: 15px;
+    display: inline-block;
+    transition: 0.3s;
+    text-shadow: 1px 1px black;
+
+}
+.savebutton:hover {
+    cursor: pointer;
+    color: rgb(180, 255, 255);
+
+}
+.resetbutton {
+    border: 2px solid black;
+    font-family: 'Roboto Mono', monospace;
+    color: rgb(255, 0, 0);
+    background-color: var(--divback);
+    text-shadow: 1px 1px black;
+    font-size: 25px;
+    border-radius: 5px;
+    margin-left: 15px;
+    display: inline-block;
+    transition: 0.3s;
+
+}
+
+.resetbutton:hover {
+    border: 2px solid rgb(255, 0, 0);
+    cursor: pointer;
+
+}
+.updateseperator {
+  border: 2px solid black;
+  width: 50%;
+  border-radius: 5px;
+  background-color: var(--divback);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.updateheader {
+  font-family: 'Roboto Mono', monospace;
+  color: rgb(199, 244, 255);
+  font-size: 35px;
+}
+.versiontext2 {
+  font-family: 'Roboto Mono', monospace;
+  color: rgb(63, 176, 204);
+
+  font-size: 25px;
+}
+
+
+.versiontext3 {
+  font-family: 'Roboto Mono', monospace;
+  color: white;
+  font-size: 20px;
+  content: "\A";
+  white-space: pre-wrap;
+  display: inline-block;
+  word-break: break-word;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* waves */
+
+
+
+
+
+
+.flex { /*Flexbox for containers*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .waves {
+    position:fixed;
+    width: 100%;
+    height:15vh;
+    margin-bottom:-7px; /*Fix for safari gap*/
+    min-height:100px;
+    max-height:150px;
+    bottom: 0;
+  }
+  
+  .content {
+    position:relative;
+    height:20vh;
+    text-align:center;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  /* Animation */
+  
+  .parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  }
+  .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+  @keyframes move-forever {
+    0% {
+     transform: translate3d(-90px,0,0);
+    }
+    100% { 
+      transform: translate3d(85px,0,0);
+    }
+  }
+  /*Shrinking for mobile*/
+  @media (max-width: 768px) {
+    .waves {
+      height:40px;
+      min-height:40px;
+    }
+    .content {
+      height:30vh;
+    }
+    h1 {
+      font-size:24px;
+    }
+  }
