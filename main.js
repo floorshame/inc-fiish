@@ -1,4 +1,10 @@
 /* thank you for using fiish as your next skidded project! */
+
+var soundClick = new Audio('sounds/click.mp3');
+var soundCash = new Audio('sounds/cash.mp3');
+
+
+
 var game = {
     Fish: 0,
     FishPerClick: 1,
@@ -129,17 +135,19 @@ function fishclicked(amnt) {
 function fishfromthepond(fishpondID) {
     const container = document.getElementById(pond.name[fishpondID] + "pondcooldown");
         document.getElementById(pond.name[fishpondID] + "pondbutton").disabled = true;
+        soundClick.play();
         setTimeout(function(){
             document.getElementById(pond.name[fishpondID] + "pondbutton").disabled = false;
             game.Fish = game.Fish + pond.income[fishpondID];
             document.getElementById("fishamnt").innerHTML = game.Fish;
-
+            
         }, pond.cooldown[fishpondID] * 1000);
 
 }
 
 function purchasePond(fishpondID) {
     if (game.Money >= pond.price[fishpondID]) {
+        soundCash.play();
         game.Money -= pond.price[fishpondID];
         pond.unlocked[fishpondID] = 1;
         document.getElementById("moneyamnt").innerHTML = game.Money;
@@ -151,6 +159,7 @@ function purchasePond(fishpondID) {
 
 function purchaseAF(fishpondID) {
     if (game.Money >= autoFish.price[fishpondID]) {
+        soundCash.play();
         game.Money -= autoFish.price[fishpondID];
         autoFish.price[fishpondID] = Math.round(autoFish.price[fishpondID] * 1.5);
         autoFish.owned[fishpondID] += 1;
@@ -165,6 +174,7 @@ function purchaseUpgrade(upgradeID) {
     if (game.Money >= upgrade.cost[upgradeID]) { 
 
         if (upgrade.modifier[upgradeID] == "fish") {
+            soundCash.play();
             game.Money -= upgrade.cost[upgradeID]
             upgrade.unlocked[upgradeID] = 1;
             var fishname = upgrade.modifiername[upgradeID];
@@ -350,6 +360,8 @@ document.addEventListener("keydown", function(event) {
     }
 }, false);
 
+
+
 function pondCheck() {
     for (i = 0; i < pond.name.length; i++) {
         if (pond.unlocked[i] == 0) {
@@ -387,6 +399,7 @@ function updateUpgrades() {
 
 function sellfish() {
     if (game.Fish > 0 ) {
+        soundCash.play();
         var tempmoney = game.SellMulti * game.Fish;
         game.Money += game.SellMulti * game.Fish;
         game.Fish -= game.Fish;
