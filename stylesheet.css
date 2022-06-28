@@ -121,16 +121,48 @@ html {
   background-color: var(--divback);
   width: 20%;
   border-radius: var(--curves);
-  margin-left: 5%;
   padding: 7px;
   display: inline-block;
   margin-top: 2%;
+  margin-left: 5px;
+  margin-left: 5px;
   
 }
 .robohead {
   font-family: 'Comfortaa', cursive;
   color: white;
+  margin-left: 45px;
+  display: inline-block;
 }
+.robostats {
+  border: var(--borderwidth) solid var(--border);
+  background-color: var(--divback);
+  width: 20%;
+  border-radius: var(--curves);
+  margin-left: 45px;
+  padding: 5px;
+  display: inline-block;
+  vertical-align: top;
+}
+.robostatstext {
+  font-family: 'Comfortaa', cursive;
+  color: white;
+  font-size: 25px;
+}
+.robobuttons {
+  width: 100%;
+  border-radius: var(--curves);
+  background-color: var(--divback);
+  border: var(--borderwidth) solid rgb(0, 0, 0);
+  color: white;
+  font-family: 'Comfortaa', cursive;
+  margin: 1px;
+  font-size: 15px;
+}
+.robobuttons:hover {
+  cursor: pointer;
+}
+
 .pondname {
   font-family: 'Comfortaa', cursive;
     color: white;
@@ -150,6 +182,7 @@ html {
   color: rgb(143, 143, 143);
   cursor:not-allowed;
 }
+
 .pondbutton:disabled:hover {
   cursor:not-allowed;
 

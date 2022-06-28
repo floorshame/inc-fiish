@@ -76,6 +76,26 @@ var upgrade = {
     ]
 }
 
+var autoFish = {
+    collected: 0,
+    cooldown: 30,
+    repair: 10,
+    repaircost: 0, /* when unlocking new pond price goes up by 2x*/
+
+    price: [
+        25,
+        100,
+        300,
+    ],
+    owned: [
+        0,
+        0,
+        0,
+    ],
+
+
+}
+
 const NotificationConst = document.querySelector('.Notification')
 
 
@@ -130,10 +150,10 @@ function purchasePond(fishpondID) {
 }
 
 function purchaseAF(fishpondID) {
-    if (game.Money >= pond.AFprice[fishpondID]) {
-        game.Money -= pond.AFprice[fishpondID];
-        pond.AFprice[fishpondID] = Math.round(pond.AFprice[fishpondID] * 1.05);
-        pond.AFowned[fishpondID] += 1;
+    if (game.Money >= autoFish.price[fishpondID]) {
+        game.Money -= autoFish.price[fishpondID];
+        autoFish.price[fishpondID] = Math.round(autoFish.price[fishpondID] * 1.5);
+        autoFish.owned[fishpondID] += 1;
         updatescores();
         pondCheck();
     } else {
@@ -170,6 +190,26 @@ function purchaseUpgrade(upgradeID) {
     }
 }
 
+function repairAutoFish() {
+    if (game.Money >= autoFish.repaircost) {
+        console.log("wow");
+        game.Money -= autoFish.repaircost;
+        autoFish.repair = 10;
+        checkAF();
+    } else {
+        console.log("l");
+    }
+}
+
+function withFish() {
+    if (autoFish.collected >= 1) {
+        game.Fish += autoFish.collected;
+        autoFish.collected = 0;
+        checkAF();
+        updatescores();
+    }
+}
+
 setInterval(function() {
     document.getElementById("fishamnt").innerHTML = game.Fish;
     document.title = "fiish - " + game.Fish;
@@ -183,15 +223,40 @@ setInterval(function() {
     createNotification('the dawn is your enemy', 60)
 }, 86400 * 1000);
 
+
+/* AF CODE */
 setInterval(function() {
-    for (i = 0; i < pond.name.length; i++) {
-        if (pond.AFowned[i] >= 1) {
-            game.Fish += pond.AFowned[i] * pond.income[i]
+    for (i = 0; i < autoFish.owned.length; i++) {
+        if (autoFish.repair >= 1) {
+            if (autoFish.owned[i] >= 1) {
+                autoFish.collected += pond.income[i] * autoFish.owned[i];
+                var rolldice = Math.floor(Math.random() * (10 - 1) + 1);
+                console.log(rolldice);
+                if (rolldice == 1) {
+                    autoFish.repair -= 1;
+                    checkAF();
+
+                } else {
+                    checkAF();
+                }
+            }
+        } else {
         }
+    }
 
-    } 
+}, autoFish.cooldown * 1000);
 
-}, pond.AFcooldown[0] * 1000);
+function checkAF() {
+    document.getElementById("roboFishCollected").innerHTML = autoFish.collected;
+    document.getElementById("roboFishCooldown").innerHTML = autoFish.cooldown;
+    document.getElementById("roboGrade").innerHTML = autoFish.repair;
+}
+
+
+
+
+
+
 
 
 var TabOpened = "pond"; /* tab that is currently opened */
@@ -295,11 +360,9 @@ function pondCheck() {
         } if (pond.unlocked[i] == 1) {
             document.getElementById(pond.name[i] + "pond").style.display = '';
             document.getElementById(pond.name[i] + "pondbuy").style.display = 'none';
-            document.getElementById(pond.name[i] + "afcost").innerHTML = pond.AFprice[i];
-            document.getElementById(pond.name[i] + "afowned").innerHTML = pond.AFowned[i];
+            document.getElementById(pond.name[i] + "afcost").innerHTML = autoFish.price[i];
         } if (pond.unlocked[i] == 2) {
-            document.getElementById(pond.name[i] + "afcost").innerHTML = pond.AFprice[i];
-            document.getElementById(pond.name[i] + "afowned").innerHTML = pond.AFowned[i];
+            document.getElementById(pond.name[i] + "afcost").innerHTML = autoFish.price[i];
 
 
         }
@@ -351,20 +414,22 @@ function saveGame() {
         pondunlocked: pond.unlocked,
         pondprice: pond.price,
 
-        /* af pond data */
-
-        pondAFprice: pond.AFprice,
-        pondAFowned: pond.AFowned,
-        pondAFcooldown: pond.AFcooldown,
-
         /* upgrade data*/
         upgradeID: upgrade.id,
         upgradeCost: upgrade.cost,
         upgradeUnlocked: upgrade.unlocked,
         upgradeModifier: upgrade.modifier,
         upgradeModifierName: upgrade.modifiername,
-        upgradeModifierMulti: upgrade.modifiermulti
+        upgradeModifierMulti: upgrade.modifiermulti,
 
+        /* auto fish data */
+        AFCollected: autoFish.collected,
+        AFCooldown: autoFish.cooldown,
+        AFrepair: autoFish.repair,
+        AFrepaircost: autoFish.repaircost,
+
+        AFprice: autoFish.price,
+        AFowned: autoFish.owned,
     };
     localStorage.setItem("gamedata", JSON.stringify(gamedata));
     createNotification('Game has been saved', 3)
@@ -378,6 +443,12 @@ function loadGame () {
         if (typeof gamedata.Fish !== "undefined") game.FPS = gamedata.FPS;
         if (typeof gamedata.SellMulti !== "undefined") game.SellMulti = gamedata.SellMulti;
         if (typeof gamedata.Money !== "undefined") game.Money = gamedata.Money;
+
+        if (typeof gamedata.AFCollected !== "undefined") autoFish.collected = gamedata.AFCollected;
+        if (typeof gamedata.AFCooldown !== "undefined") autoFish.cooldown = gamedata.AFCooldown;
+        if (typeof gamedata.AFrepair !== "undefined") autoFish.repair = gamedata.AFrepair;
+        if (typeof gamedata.AFrepaircost !== "undefined") autoFish.repaircost = gamedata.AFrepaircost;
+
 
         if (typeof gamedata.pondname !== "undefined") {
             for (i = 0; i < gamedata.pondname.length; i++) {
@@ -406,21 +477,6 @@ function loadGame () {
             for (i = 0; i < gamedata.pondprice.length; i++) {
                 pond.price[i] = gamedata.pondprice[i];
             }
-            }
-
-            if (typeof gamedata.pondAFprice !== "undefined") {
-            for (i = 0; i < gamedata.pondAFprice.length; i++) {
-                pond.AFprice[i] = gamedata.pondAFprice[i];
-            }
-            }
-            if (typeof gamedata.pondAFowned !== "undefined") {
-            for (i = 0; i < gamedata.pondAFowned.length; i++) {
-                pond.AFowned[i] = gamedata.pondAFowned[i];
-            }
-            }   
-            if (typeof gamedata.pondAFcooldown !== "undefined") {
-            for (i = 0; i < gamedata.pondAFcooldown.length; i++) {
-                pond.AFcooldown[i] = gamedata.pondAFcooldown[i];
             }
 
             if (typeof gamedata.upgradeID !== "undefined") {
@@ -454,7 +510,18 @@ function loadGame () {
             }
             }
 
+            if (typeof gamedata.AFprice !== "undefined") {
+            for (i = 0; i < gamedata.AFprice.length; i++) {
+                    autoFish.price[i] = gamedata.AFprice[i];
             }
+            }
+    
+            if (typeof gamedata.AFowned !== "undefined") {
+            for (i = 0; i < gamedata.AFowned.length; i++) {
+                    autoFish.owned[i] = gamedata.AFowned[i];
+            }
+            }
+    
 
 
         }
@@ -463,6 +530,7 @@ function loadGame () {
     updatescores();
     pondCheck();
     updateUpgrades();
+    checkAF();
     createNotification('Game has been loaded', 3)
 
 }
@@ -487,8 +555,7 @@ document.addEventListener("keydown", function(event) {
 
 window.onload = function() {
     loadGame();
-    console.log('%fiish has been loaded', 'background: #000000; color: #c4f6ff');
+    console.log('%cfiish has been loaded', 'background: #000000; color: #c4f6ff');
 
 };
-
 

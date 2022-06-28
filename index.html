@@ -15,15 +15,14 @@
             <button Title="Sell Fish"  onclick="sellfish()" class="TABButton moneyhover"><span class="material-symbols-rounded tabbuttonicon">&#xef63;</span></button>
 
             <h1 class="logotext">fiish</h1>
-            <h1 class="versiontext">0.1.2.3</h1>
+            <h1 class="versiontext">0.2.0.0</h1>
 
 
         </div>
-        <center>
-        <p class="fishscore">Fish - <span id="fishamnt">0</span></p>
-        <p class="moneyscore">$ - <span id="moneyamnt">0</span></p>
-
-        </center>
+        <div style="margin-left: 10px; margin-top: 10px;" class="scores">
+            <p class="fishscore">Fish <span id="fishamnt">0</span></p>
+            <p class="moneyscore">$ <span id="moneyamnt">0</span></p>
+        </div>
     </head>
 
     <body>
@@ -31,11 +30,12 @@
 
 
         <div id="TAB_pond">
+            <center>
             <div class="salmonpond" id="salmonpond">
                 <center>
                     <h1 class="pondname">salmon pond</h1>
                     <button onclick="fishfromthepond(0)" id="salmonpondbutton" class="pondbutton">Fish | <span id="salmonpondcooldown">1</span> Second</button>
-                    <button onclick="purchaseAF(0)" id="salmonafbutton" class="pondbutton">AutoFish | <span id="salmonpondaf">10</span> Seconds</br> Cost: $<span id="salmonafcost">15</span> | Owned: <span id="salmonafowned">0</span></button>
+                    <button onclick="purchaseAF(0)" id="salmonafbutton" class="pondbutton">Upgrade autoFish</br> Cost: $<span id="salmonafcost">25</span></button>
 
                 </center>
             </div>
@@ -46,7 +46,7 @@
                     <h1 class="pondname">tuna pond</h1>
 
                     <button onclick="fishfromthepond(1)" id="tunapondbutton" class="pondbutton">Fish | <span id="tunacooldown">3</span> Seconds</button>
-                    <button onclick="purchaseAF(1)" id="tunaafbutton" class="pondbutton">AutoFish | <span id="tunapondaf">10</span> Seconds</br> Cost: $<span id="tunaafcost">50</span> | Owned: <span id="tunaafowned">0</span></button>
+                    <button onclick="purchaseAF(1)" id="tunaafbutton" class="pondbutton">Upgrade autoFish</br> Cost: $<span id="tunaafcost">100</span></button>
 
                 </center>
             </div>
@@ -55,34 +55,35 @@
                 <center>
                     <h1 class="pondname">shrimp pond</h1>
                     <button onclick="fishfromthepond(2)" id="shrimppondbutton" class="pondbutton">Fish | <span id="shrimppondcooldown">1</span> Second</button>
-                    <button onclick="purchaseAF(2)" id="shrimpafbutton" class="pondbutton">AutoFish | <span id="shrimppondaf">10</span> Seconds</br> Cost: $<span id="shrimpafcost">250</span> | Owned: <span id="shrimpafowned">0</span></button>
+                    <button onclick="purchaseAF(2)" id="shrimpafbutton" class="pondbutton">Upgrade autoFish</br> Cost: $<span id="shrimpafcost">300</span></button>
 
                 </center>
             </div>
-
+        </center>
 
         </div>
 
 
 
         <div id="TAB_Shop">
-            <div class="Shop_Seperator" style="margin-left: 2%">
-                <center>
-                    <h1 class="Shop_Header">Ponds</h1>
-                    <button class="PurchaseButton" id="tunapondbuy" onclick="purchasePond(1)">Tuna pond | Cost: $<span id="fishnetcost">50</span></button>
-                    <button class="PurchaseButton" id="shrimppondbuy" onclick="purchasePond(2)">Shrimp pond | Cost: $<span id="fishnetcost">500</span></button>
+            <center>
+                <div class="Shop_Seperator" style="margin-left: 2%">
+                    <center>
+                        <h1 class="Shop_Header">Ponds</h1>
+                        <button class="PurchaseButton" id="tunapondbuy" onclick="purchasePond(1)">Tuna pond | Cost: $<span id="fishnetcost">50</span></button>
+                        <button class="PurchaseButton" id="shrimppondbuy" onclick="purchasePond(2)">Shrimp pond | Cost: $<span id="fishnetcost">500</span></button>
 
-                </center>
-            </div>
-            <div class="Shop_Seperator" style="margin-left: 2%">
-                <center>
-                    <h1 class="Shop_Header">Upgrades</h1>
-                    <button class="PurchaseButton" id="0upgradebuy" onclick="purchaseUpgrade(0)">[0] x2 salmon | Cost: <span id="fishnetcost">25</span></button>
-                    <button class="PurchaseButton" id="1upgradebuy" onclick="purchaseUpgrade(1)">[1] x2 tuna | Cost: <span id="fishnetcost">100</span></button>
+                    </center>
+                </div>
+                <div class="Shop_Seperator" style="margin-left: 2%">
+                    <center>
+                        <h1 class="Shop_Header">Upgrades</h1>
+                        <button class="PurchaseButton" id="0upgradebuy" onclick="purchaseUpgrade(0)">[0] x2 salmon | Cost: <span id="fishnetcost">25</span></button>
+                        <button class="PurchaseButton" id="1upgradebuy" onclick="purchaseUpgrade(1)">[1] x2 tuna | Cost: <span id="fishnetcost">100</span></button>
 
-                </center>
-            </div>
-
+                    </center>
+                </div>
+        </center>
         </div>
 
 
@@ -126,10 +127,36 @@
 
 
         <div id="TAB_Koi">
+            <center>
             <h1 class="robohead">
                 <span style="  font-size: 150px;" class="material-symbols-rounded">&#xf06c;</span>             
+                </br>
+                autoFish
             </h1>
-        </div>
-        
+        </center>
+    </br>
+            <div class="robostats">
+                <center>
+                    <h1 class="robostatstext">- stats -</h1>
+                    <h1 class="robostatstext">Fish Collected: <span id="roboFishCollected">0</span></h1>
+                    <h1 class="robostatstext">Fish Cooldown: <span id="roboFishCooldown">30</span></h1>
+                    <h1 class="robostatstext">Robot Repair: <span id="roboGrade">10</span>/10</h1>
+
+                </center>
+            
+            </div>
+            <center>
+
+            <div class="robostats">
+                <center>
+                    <h1 class="robostatstext">- actions -</h1>
+                    <button onclick="withFish();" class="robobuttons">withdraw - fish</button>
+                    </br>
+                    <button onclick="repairAutoFish();" class="robobuttons">repair - $<span id="roboRepairCost">0</span></button>
+
+                </center>
+            </center>
+            </div>
+
 </html>
 <script type="text/javascript" src="main.js"></script>
