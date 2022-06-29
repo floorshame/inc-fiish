@@ -15,7 +15,7 @@
             <button Title="Sell Fish"  onclick="sellfish()" class="TABButton moneyhover"><span class="material-symbols-rounded tabbuttonicon">&#xef63;</span></button>
 
             <h1 class="logotext">fiish</h1>
-            <h1 class="versiontext">0.2.0.1</h1>
+            <h1 class="versiontext">0.2.1.1</h1>
 
 
         </div>
@@ -54,11 +54,21 @@
             <div class="salmonpond" id="shrimppond">
                 <center>
                     <h1 class="pondname">shrimp pond</h1>
-                    <button onclick="fishfromthepond(2)" id="shrimppondbutton" class="pondbutton">Fish | <span id="shrimppondcooldown">1</span> Second</button>
+                    <button onclick="fishfromthepond(2)" id="shrimppondbutton" class="pondbutton">Fish | <span id="shrimppondcooldown">5</span> Second</button>
                     <button onclick="purchaseAF(2)" id="shrimpafbutton" class="pondbutton">Upgrade autoFish</br> Cost: $<span id="shrimpafcost">300</span></button>
 
                 </center>
             </div>
+
+            <div class="salmonpond" id="angelfishpond">
+                <center>
+                    <h1 class="pondname">angelfish pond</h1>
+                    <button onclick="fishfromthepond(3)" id="angelfishpondbutton" class="pondbutton">Fish | <span id="angelfishpondcooldown">5</span> Second</button>
+                    <button onclick="purchaseAF(3)" id="angelfishafbutton" class="pondbutton">Upgrade autoFish</br> Cost: $<span id="angelfishafcost">300</span></button>
+
+                </center>
+            </div>
+
         </center>
 
         </div>
@@ -72,6 +82,7 @@
                         <h1 class="Shop_Header">Ponds</h1>
                         <button class="PurchaseButton" id="tunapondbuy" onclick="purchasePond(1)">Tuna pond | Cost: $<span id="fishnetcost">50</span></button>
                         <button class="PurchaseButton" id="shrimppondbuy" onclick="purchasePond(2)">Shrimp pond | Cost: $<span id="fishnetcost">500</span></button>
+                        <button class="PurchaseButton" id="angelfishpondbuy" onclick="purchasePond(3)">Angelfish pond | Cost: $<span id="fishnetcost">2500</span></button>
 
                     </center>
                 </div>
@@ -80,6 +91,7 @@
                         <h1 class="Shop_Header">Upgrades</h1>
                         <button class="PurchaseButton" id="0upgradebuy" onclick="purchaseUpgrade(0)">[0] x2 salmon | Cost: <span id="fishnetcost">25</span></button>
                         <button class="PurchaseButton" id="1upgradebuy" onclick="purchaseUpgrade(1)">[1] x2 tuna | Cost: <span id="fishnetcost">100</span></button>
+                        <button class="PurchaseButton" id="2upgradebuy" onclick="purchaseUpgrade(2)">[2] x2 shrimp | Cost: <span id="fishnetcost">800</span></button>
 
                     </center>
                 </div>
@@ -138,9 +150,9 @@
             <div class="robostats">
                 <center>
                     <h1 class="robostatstext">- stats -</h1>
-                    <h1 class="robostatstext">Fish Collected: <span id="roboFishCollected">0</span></h1>
-                    <h1 class="robostatstext">Fish Cooldown: <span id="roboFishCooldown">30</span></h1>
-                    <h1 class="robostatstext">Robot Repair: <span id="roboGrade">10</span>/10</h1>
+                    <h1 style="color: rgb(170, 170, 170);" class="robostatstext">Fish Collected: <span style="color: white;" id="roboFishCollected">0</span></h1>
+                    <h1 style="color: rgb(170, 170, 170);" class="robostatstext">Fish Cooldown: <span style="color: white;" id="roboFishCooldown">30</span></h1>
+                    <h1 style="color: rgb(170, 170, 170);" class="robostatstext">Robot Repair: <span style="color: white;" id="roboGrade">10</span><span style="color: white;">/10</span></h1>
 
                 </center>
             

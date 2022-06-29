@@ -18,65 +18,63 @@ var pond = {
     name: [
         "salmon",
         "tuna",
-        "shrimp"
+        "shrimp",
+        "angelfish"
     ],
     income: [
         1,
         5,
-        12
+        12,
+        32
     ],
     cooldown: [
         1,
         3,
-        5
+        5,
+        12
     ],
     unlocked: [
         2,
+        0,
         0,
         0
     ],
     price: [
         0,
         50,
-        500
+        500,
+        2500
     ], /* AutoFISH PRICES*/
-    AFprice: [ /* all base prices are 50% */
-        15,
-        50,
-        250
-    ],
-    AFowned: [
-        0,
-        0,
-        0
-    ],
-    AFcooldown: [
-        10
-    ]
 }
 
 var upgrade = {
     id: [
         0,
-        1
+        1,
+        2
     ],
     cost: [
         25,
-        100
+        100,
+        800
     ],
     unlocked: [
+        0,
         0,
         0
     ],
     modifier: [
         "fish",
+        "fish",
         "fish"
     ],
     modifiername: [
         "salmon",
-        "tuna"
+        "tuna",
+        "shrimp"
     ],
     modifiermulti: [
+        2,
         2,
         2
     ]
@@ -92,8 +90,10 @@ var autoFish = {
         25,
         100,
         300,
+        1500,
     ],
     owned: [
+        0,
         0,
         0,
         0,
@@ -240,8 +240,7 @@ setInterval(function() {
         if (autoFish.repair >= 1) {
             if (autoFish.owned[i] >= 1) {
                 autoFish.collected += pond.income[i] * autoFish.owned[i];
-                var rolldice = Math.floor(Math.random() * (10 - 1) + 1);
-                console.log(rolldice);
+                var rolldice = Math.floor(Math.random() * (4 - 1) + 1);
                 if (rolldice == 1) {
                     autoFish.repair -= 1;
                     checkAF();
