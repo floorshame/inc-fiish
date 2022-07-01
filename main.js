@@ -110,7 +110,7 @@ function createNotification(text, seconds){
 
   NotificationN.classList.add('toast')
   NotificationN.innerText = text
-  NotificationN.style = ' margin-bottom: 5px; border: solid var(--borderwidth) var(--border); border-radius: var(--curves); padding: 5px;   background-color: var(--divback); '
+  NotificationN.style = '  border: solid 0 var(--border); border-radius: var(--curves); padding: 5px;   background-color: var(--divback); '
   NotificationConst.appendChild(NotificationN);
   
   
@@ -269,17 +269,21 @@ function checkAF() {
 
 
 var TabOpened = "pond"; /* tab that is currently opened */
+var AFOpened = false;
 /* tab stuff*/
 document.getElementById("TAB_Shop").style.display = 'none'
 document.getElementById("TAB_Koi").style.display = 'none';
 document.getElementById("TAB_Settings").style.display = 'none';
-document.getElementById("Pond_TAB_Button").style = 'border-color: rgb(102, 152, 218);';
+document.getElementById("Pond_TAB_Button").style = 'box-shadow: 0px -1px var(--blurwidth) var(--acsent);';
+
+
+document.getElementById("fishhidden").style.display = 'none';
 
 function TabSwitch(Tab) {
     if (Tab == 'shop') {
         TabOpened = "shop"
 
-        document.getElementById("Shop_TAB_Button").style = 'border-color: rgb(102, 152, 218);';
+        document.getElementById("Shop_TAB_Button").style = 'box-shadow: 0px -1px var(--blurwidth) var(--acsent);';
         document.getElementById("Settings_TAB_Button").style = '';
         document.getElementById("Koi_TAB_Button").style = '';
         document.getElementById("Pond_TAB_Button").style = '';
@@ -294,7 +298,7 @@ function TabSwitch(Tab) {
         TabOpened = "pond"
 
 
-        document.getElementById("Pond_TAB_Button").style = 'border-color: rgb(102, 152, 218);';
+        document.getElementById("Pond_TAB_Button").style = 'box-shadow: 0px -1px var(--blurwidth) var(--acsent);';
         document.getElementById("Settings_TAB_Button").style = '';
         document.getElementById("Koi_TAB_Button").style = '';
         document.getElementById("Shop_TAB_Button").style = '';
@@ -306,7 +310,7 @@ function TabSwitch(Tab) {
     }
     if (Tab == 'koi') {
 
-        document.getElementById("Koi_TAB_Button").style = 'border-color: rgb(102, 152, 218);';
+        document.getElementById("Koi_TAB_Button").style = 'box-shadow: 0px -1px var(--blurwidth) var(--acsent);';
         document.getElementById("Settings_TAB_Button").style = '';
         document.getElementById("Pond_TAB_Button").style = '';
         document.getElementById("Shop_TAB_Button").style = '';
@@ -318,7 +322,7 @@ function TabSwitch(Tab) {
     }
     if (Tab == 'settings') {
 
-        document.getElementById("Settings_TAB_Button").style = 'border-color: rgb(102, 152, 218);';
+        document.getElementById("Settings_TAB_Button").style = 'box-shadow: 0px -1px var(--blurwidth) var(--acsent);';
         document.getElementById("Koi_TAB_Button").style = '';
         document.getElementById("Pond_TAB_Button").style = '';
         document.getElementById("Shop_TAB_Button").style = '';
@@ -330,7 +334,15 @@ function TabSwitch(Tab) {
         document.getElementById("TAB_Shop").style.display = 'none';
     }
 }
-
+function AFTabClicked() {
+    if (AFOpened == true) {
+        document.getElementById("fishhidden").style.display = 'none';
+        AFOpened = false;
+    }else {
+        document.getElementById("fishhidden").style.display = '';
+        AFOpened = true;
+    }
+}
 document.addEventListener("keydown", function(event) {
     if (event.which == 49) { //ctrl + s //
         event.preventDefault();

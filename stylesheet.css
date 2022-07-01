@@ -3,15 +3,23 @@
     margin: 0;
 }
 html {
-    background-color: rgba(15, 15, 15, 0.918);
+  background: linear-gradient(270deg, #414141, #1d1d1d);
+  background-size: 400% 400%;
+
+  -webkit-animation: background 240s ease infinite;
+  -moz-animation: background 240s ease infinite;
+  -o-animation: background 240s ease infinite;
+  animation: background 240s ease infinite;
 }
 
 :root {
-  --divback: #00000063;
+  --divback: #16161663;
   --border: rgb(255, 255, 255);
   --curves: 15px;
   --borderwidth: 2px;
   --acsent: rgb(102, 152, 218);
+  --bluredge: black;
+  --blurwidth: 5px;
 }
 
 .bottombuttons {
@@ -29,19 +37,41 @@ html {
     color: white;
     border-top-left-radius: var(--curves);
     border-top-right-radius: var(--curves);
-    border: solid var(--borderwidth) var(--border);
+    border: 0px solid white;
     border-bottom: solid 0px rgba(255, 255, 255, 0);
     margin-left: 5px;
     margin-bottom: 0;
     padding-bottom: 5px;
     padding-top: 5px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0px -1px var(--blurwidth) var(--bluredge);
+    
 }
 .tabbuttonicon {
   vertical-align:bottom;
   margin-right: 5px;
   margin-bottom: 1px;
 }
-
+.autoFishTab {
+  bottom: 0;
+  position: fixed;
+  margin-left: 25px;
+  background-color: var(--divback);
+  border-top-left-radius: var(--curves);
+  border-top-right-radius: var(--curves);
+  padding: 15px;
+  box-shadow: 0px 0px var(--blurwidth) var(--bluredge);
+  backdrop-filter: blur(5px);
+  width: 30%;
+}
+.autoFishTabHeader {
+  color: white;
+  font-family: 'Comfortaa', cursive;
+  font-size: 30px;
+}
+.autoFishTabHeader:hover {
+  cursor: pointer;
+}
 .material-symbols-rounded {
   font-variation-settings:
   'FILL' 1,
@@ -67,6 +97,9 @@ html {
 .moneyhover:hover {
   color: rgb(173, 255, 173) !important;
 }
+.moneyhover:active {
+  box-shadow: 0px -1px var(--blurwidth) rgb(173, 255, 173);
+}
 .Notification {
   width: 500px;
   bottom: 0;
@@ -80,7 +113,15 @@ html {
   font-size: 20px;
   margin-bottom: 25px;
   border-radius: var(--curves);
-  
+  backdrop-filter: blur(15px);
+  box-shadow: 0px 0px var(--blurwidth) var(--bluredge);
+  border: 0px solid white;
+  transition: 0.3s;
+
+}
+.Notification:hover {
+  box-shadow: 0px 0px var(--blurwidth) rgb(83, 83, 83);
+
 }
 .FishButton {
     width: 10%;
@@ -107,6 +148,7 @@ html {
     margin-top: 5px;
 
 }
+
 .versiontext {
   font-family: 'Comfortaa', cursive;
       float: right;
@@ -117,7 +159,6 @@ html {
   margin-top: 5px;
 }
 .salmonpond {
-  border: var(--borderwidth) solid var(--border);
   background-color: var(--divback);
   width: 20%;
   border-radius: var(--curves);
@@ -126,7 +167,9 @@ html {
   margin-top: 2%;
   margin-left: 5px;
   margin-left: 5px;
-  
+  backdrop-filter: blur(15px);
+  box-shadow: 0px 0px var(--blurwidth) var(--bluredge);
+
 }
 .robohead {
   font-family: 'Comfortaa', cursive;
@@ -150,17 +193,29 @@ html {
   font-size: 25px;
 }
 .robobuttons {
-  width: 100%;
+  width: 45%;
   border-radius: var(--curves);
   background-color: var(--divback);
-  border: var(--borderwidth) solid rgb(0, 0, 0);
   color: white;
   font-family: 'Comfortaa', cursive;
   margin: 1px;
   font-size: 15px;
+  display: inline-block;
+  backdrop-filter: blur(15px);
+  box-shadow: 0px 0px var(--blurwidth) var(--bluredge);
+  border: 0px solid white;
+  transition: 0.3s;
+  font-size: 15px;
+  padding: 5px;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-top: 10px;
+
 }
 .robobuttons:hover {
   cursor: pointer;
+  box-shadow: 0px 0px var(--blurwidth) rgb(83, 83, 83);
+
 }
 
 .pondname {
@@ -174,21 +229,30 @@ html {
   color: white;
   font-family: 'Comfortaa', cursive;
     border-radius: var(--curves);
-  border: 2px solid black;
   transition: 0.3s;
   margin-top: 1%;
+  backdrop-filter: blur(15px);
+  box-shadow: 0px 0px var(--blurwidth) var(--bluredge);
+  border: 0px solid white;
+  padding: 5px;
+  margin-bottom: 5px;
+  font-size: 15px;
 }
 .pondbutton:disabled {
   color: rgb(143, 143, 143);
   cursor:not-allowed;
+  
 }
 
 .pondbutton:disabled:hover {
   cursor:not-allowed;
+  box-shadow: 0px 0px var(--blurwidth) rgb(85, 23, 23);
 
 }
 .pondbutton:hover {
   cursor: pointer;
+  box-shadow: 0px 0px var(--blurwidth) rgb(83, 83, 83);
+
 }
 .fishscore {
   font-family: 'Comfortaa', cursive;
@@ -197,6 +261,16 @@ html {
     text-shadow: 2px 2px black;
     
 }
+.seperator {
+
+  border: 3px solid rgba(0, 0, 0, 0.075);
+  background-color: rgba(0, 0, 0, 0.075);
+  border-radius: var(--curves);
+  width: 50%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .moneyscore {
   font-family: 'Comfortaa', cursive;
     font-size: 25px;
@@ -208,20 +282,23 @@ html {
     margin-top: 10%;
 }
 .PurchaseButton {
+  width: 100%;
+  background-color: var(--divback);
+  color: white;
   font-family: 'Comfortaa', cursive;
-      border-radius: var(--curves);
-    border: 2px solid black;
-    background-color: var(--divback);
-    color: white;
-    transition: 0.3s;
-    margin-top: 2%;
-    width: 90%;
-    font-size: 15px;
+    border-radius: var(--curves);
+  transition: 0.3s;
+  margin-top: 1%;
+  backdrop-filter: blur(15px);
+  box-shadow: 0px 0px var(--blurwidth) var(--bluredge);
+  border: 0px solid white;
+  padding: 5px;
+  margin-bottom: 5px;
+  font-size: 15px;
 }
 .PurchaseButton:hover {
-    color: rgb(180, 255, 255);
-    cursor: pointer;
-    background-color: rgb(56, 56, 56);
+  cursor: pointer;
+  box-shadow: 0px 0px var(--blurwidth) rgb(83, 83, 83);
 
 }
 .Shop_Header {
@@ -229,11 +306,18 @@ html {
       color: white;
 }
 .Shop_Seperator {
-    border: var(--borderwidth) solid var(--border);
+    border: 0px solid var(--border);
     width: 25%;
     border-radius: var(--curves);
     background-color: var(--divback);
     display: inline-block;
+    background-color: var(--divback);
+    color: white;
+    transition: 0.3s;
+    backdrop-filter: blur(15px);
+    box-shadow: 0px 0px var(--blurwidth) var(--bluredge);
+    padding: 5px;
+  
 }
 .fps {
   font-family: 'Comfortaa', cursive;
@@ -399,3 +483,25 @@ html {
       font-size:24px;
     }
   }
+
+  @-webkit-keyframes background {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+  @-moz-keyframes background {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+  @-o-keyframes background {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+  @keyframes background {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+  
