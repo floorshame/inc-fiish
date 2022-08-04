@@ -1,4 +1,2 @@
-###### fiish
-## the worst game ever made
-```currently in: ALPHA```
-do not value any save files yet, the game may change alot from update to update
+###### fiish OLD PROTOTYPE
+## THIS IS NOT A FINISHED GAME AND HAS BEEN REPLACED WICH WILL COME OUT SOON: https://discord.gg/eMfGfM6qyc
